@@ -1,0 +1,8 @@
+## Interface: 110100
+## Title: Fix Mouse Look Speed
+## Author: Niclas
+## Version: 1.0
+## Notes: Prints messages when logging in or changing instances.
+## SavedVariables: FixMouseLookSpeedDB
+
+FixMouseLookSpeed.lua
