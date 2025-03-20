@@ -1,8 +1,9 @@
-## Interface: 110100
-## Title: Fix Mouse Look Speed
+## Interface: 100107
+## Title: FixMouseLookSpeed
+## Notes: Improves mouse look speed and camera settings.
 ## Author: Niclas
-## Version: 1.0
-## Notes: Prints messages when logging in or changing instances.
-## SavedVariables: FixMouseLookSpeedDB
 
-FixMouseLookSpeed.lua
+Config.lua
+UI.lua
+Core.lua
+Events.lua
