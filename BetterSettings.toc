@@ -1,0 +1,9 @@
+## Interface: 100107
+## Title: BetterSettings
+## Notes: Improves mouse look speed and camera settings.
+## Author: Niclas
+
+Config.lua
+UI.lua
+Core.lua
+Events.lua
