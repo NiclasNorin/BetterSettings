@@ -1,10 +1,10 @@
-local _, FixMouseLookSpeed = ...
+local _, BetterSettings = ...
 
 -- Create main frame
-FixMouseLookSpeed.frame = CreateFrame("Frame")
-FixMouseLookSpeed.frame:RegisterEvent("ADDON_LOADED")
-FixMouseLookSpeed.frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+BetterSettings.frame = CreateFrame("Frame")
+BetterSettings.frame:RegisterEvent("ADDON_LOADED")
+BetterSettings.frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 -- Load Config and UI
-FixMouseLookSpeed.Config.Load()
-FixMouseLookSpeed.UI.Init()
+BetterSettings.Config.Load()
+BetterSettings.UI.Init()

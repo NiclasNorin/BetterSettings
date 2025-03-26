@@ -1,6 +1,6 @@
-local _, FixMouseLookSpeed = ...
+local _, BetterSettings = ...
 
-FixMouseLookSpeed.Config = {}
+BetterSettings.Config = {}
 
 -- Default settings
 local defaultSettings = {
@@ -12,21 +12,21 @@ local defaultSettings = {
 }
 
 -- Load settings from saved variables
-function FixMouseLookSpeed.Config.Load()
-    if not FixMouseLookSpeedDB then
-        FixMouseLookSpeedDB = {}
+function BetterSettings.Config.Load()
+    if not BetterSettingsDB then
+        BetterSettingsDB = {}
     end
     for key, value in pairs(defaultSettings) do
-        if FixMouseLookSpeedDB[key] == nil then
-            FixMouseLookSpeedDB[key] = value
+        if BetterSettingsDB[key] == nil then
+            BetterSettingsDB[key] = value
         end
     end
 end
 
 -- Apply settings
-function FixMouseLookSpeed.Config.Apply()
-    for key, value in pairs(FixMouseLookSpeedDB) do
+function BetterSettings.Config.Apply()
+    for key, value in pairs(BetterSettingsDB) do
         SetCVar(key, value)
     end
-    FixMouseLookSpeedDB.saved = true
+    BetterSettingsDB.saved = true
 end

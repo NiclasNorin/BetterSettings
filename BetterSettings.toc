@@ -2,6 +2,8 @@
 ## Title: BetterSettings
 ## Notes: Improves mouse look speed and camera settings.
 ## Author: Niclas
+## SavedVariables: BetterSettingsDB
+
 
 Config.lua
 UI.lua

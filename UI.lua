@@ -1,9 +1,9 @@
-local _, FixMouseLookSpeed = ...
+local _, BetterSettings = ...
 
-FixMouseLookSpeed.UI = {}
+BetterSettings.UI = {}
 
-function FixMouseLookSpeed.UI.Init()
-    local ui = CreateFrame("Frame", "FixMouseLookSpeedUI", UIParent, "BasicFrameTemplateWithInset")
+function BetterSettings.UI.Init()
+    local ui = CreateFrame("Frame", "BetterSettingsUI", UIParent, "BasicFrameTemplateWithInset")
     ui:SetSize(250, 300)
     ui:SetPoint("CENTER")
     ui:SetMovable(true)
@@ -23,17 +23,17 @@ function FixMouseLookSpeed.UI.Init()
     rawMouseCheckbox.text = rawMouseCheckbox:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     rawMouseCheckbox.text:SetPoint("LEFT", rawMouseCheckbox, "RIGHT", 5, 0)
     rawMouseCheckbox.text:SetText("Mouse Acceleration")
-    rawMouseCheckbox:SetChecked(FixMouseLookSpeedDB.rawMouseEnable == 1)
+    rawMouseCheckbox:SetChecked(BetterSettingsDB.rawMouseEnable == 1)
     rawMouseCheckbox:SetScript("OnClick", function(self)
-        FixMouseLookSpeedDB.rawMouseEnable = self:GetChecked() and 1 or 0
+        BetterSettingsDB.rawMouseEnable = self:GetChecked() and 1 or 0
     end)
 
     -- Slider: Camera Speed
     local yawSlider = CreateFrame("Slider", nil, ui, "OptionsSliderTemplate")
     yawSlider:SetPoint("TOPLEFT", 20, -100)
-    yawSlider:SetMinMaxValues(10, 50)
+    yawSlider:SetMinMaxValues(10, 100)
     yawSlider:SetValueStep(1)
-    yawSlider:SetValue(FixMouseLookSpeedDB.cameraYawMoveSpeed)
+    yawSlider:SetValue(BetterSettingsDB.cameraYawMoveSpeed)
 
     local yawSliderLabel = ui:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     yawSliderLabel:SetPoint("BOTTOMLEFT", yawSlider, "TOPLEFT", 0, 5)
@@ -44,8 +44,8 @@ function FixMouseLookSpeed.UI.Init()
     yawSliderValue:SetText(math.floor(yawSlider:GetValue()))
 
     yawSlider:SetScript("OnValueChanged", function(self, value)
-        FixMouseLookSpeedDB.cameraYawMoveSpeed = value
-        FixMouseLookSpeedDB.cameraPitchMoveSpeed = value
+        BetterSettingsDB.cameraYawMoveSpeed = value
+        BetterSettingsDB.cameraPitchMoveSpeed = value
         yawSliderValue:SetText(math.floor(value))
     end)
 
@@ -54,7 +54,7 @@ function FixMouseLookSpeed.UI.Init()
     zoomSlider:SetPoint("TOPLEFT", 20, -150)
     zoomSlider:SetMinMaxValues(1, 2.6)
     zoomSlider:SetValueStep(0.1)
-    zoomSlider:SetValue(FixMouseLookSpeedDB.cameraDistanceMaxZoomFactor)
+    zoomSlider:SetValue(BetterSettingsDB.cameraDistanceMaxZoomFactor)
 
     local zoomSliderLabel = ui:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     zoomSliderLabel:SetPoint("BOTTOMLEFT", zoomSlider, "TOPLEFT", 0, 5)
@@ -65,7 +65,7 @@ function FixMouseLookSpeed.UI.Init()
     zoomSliderValue:SetText(string.format("%.1f", zoomSlider:GetValue()))
 
     zoomSlider:SetScript("OnValueChanged", function(self, value)
-        FixMouseLookSpeedDB.cameraDistanceMaxZoomFactor = value
+        BetterSettingsDB.cameraDistanceMaxZoomFactor = value
         zoomSliderValue:SetText(string.format("%.1f", value))
     end)
 
@@ -75,13 +75,13 @@ function FixMouseLookSpeed.UI.Init()
     applyButton:SetSize(100, 25)
     applyButton:SetText("Apply")
     applyButton:SetScript("OnClick", function()
-        FixMouseLookSpeedDB.saved = true
-        FixMouseLookSpeedDB.cameraDistanceMaxZoomFactor = zoomSlider:GetValue()
-        FixMouseLookSpeedDB.cameraYawMoveSpeed = yawSlider:GetValue()
-        FixMouseLookSpeedDB.cameraPitchMoveSpeed = yawSlider:GetValue()
-        FixMouseLookSpeedDB.rawMouseEnable = rawMouseCheckbox:GetChecked() and 1 or 0
+        BetterSettingsDB.saved = true
+        BetterSettingsDB.cameraDistanceMaxZoomFactor = zoomSlider:GetValue()
+        BetterSettingsDB.cameraYawMoveSpeed = yawSlider:GetValue()
+        BetterSettingsDB.cameraPitchMoveSpeed = yawSlider:GetValue()
+        BetterSettingsDB.rawMouseEnable = rawMouseCheckbox:GetChecked() and 1 or 0
 
-        FixMouseLookSpeed.Config.Apply()
+        BetterSettings.Config.Apply()
         ui:Hide()
     end)
 
@@ -90,11 +90,11 @@ function FixMouseLookSpeed.UI.Init()
         if ui:IsShown() then
             ui:Hide()
         else
-            rawMouseCheckbox:SetChecked(FixMouseLookSpeedDB.rawMouseEnable == 1)
-            yawSlider:SetValue(FixMouseLookSpeedDB.cameraYawMoveSpeed)
-            yawSliderValue:SetText(math.floor(FixMouseLookSpeedDB.cameraYawMoveSpeed))
-            zoomSlider:SetValue(FixMouseLookSpeedDB.cameraDistanceMaxZoomFactor)
-            zoomSliderValue:SetText(string.format("%.1f", FixMouseLookSpeedDB.cameraDistanceMaxZoomFactor))
+            rawMouseCheckbox:SetChecked(BetterSettingsDB.rawMouseEnable == 1)
+            yawSlider:SetValue(BetterSettingsDB.cameraYawMoveSpeed)
+            yawSliderValue:SetText(math.floor(BetterSettingsDB.cameraYawMoveSpeed))
+            zoomSlider:SetValue(BetterSettingsDB.cameraDistanceMaxZoomFactor)
+            zoomSliderValue:SetText(string.format("%.1f", BetterSettingsDB.cameraDistanceMaxZoomFactor))
             ui:Show()
         end
     end
